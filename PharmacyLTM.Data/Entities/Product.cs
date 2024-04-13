@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PharmacyLTM.Data.Entities;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace PharmacyLTM.Data.Entities
@@ -21,5 +23,6 @@ namespace PharmacyLTM.Data.Entities
         public List<Cart> Carts { get; set; }
 
         public List<ProductTranslation> ProductTranslations { get; set; }
+
     }
 }

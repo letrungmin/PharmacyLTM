@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PharmacyLTM.Data.Configuration;
 using PharmacyLTM.Data.Entities;
+using PharmacyLTM.Data.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace PharmacyLTM.Data.EF
         {
         }
 
+        //Configure using Fluent API
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CartConfiguration());
@@ -31,6 +33,8 @@ namespace PharmacyLTM.Data.EF
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
 
+            //Data Seeding
+            modelBuilder.Seed();
             //base.OnModelCreating(modelBuilder);
         }
 
