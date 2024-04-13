@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PharmacyLTM.Data.EF;
 
 namespace PharmacyLTM.Data.Migrations
 {
     [DbContext(typeof(PharmacyLTMDbContext))]
-    partial class PharmacyLTMDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240413151253_AspNetCoreIdentityDatabase")]
+    partial class AspNetCoreIdentityDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,13 +94,6 @@ namespace PharmacyLTM.Data.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
-                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -175,16 +170,6 @@ namespace PharmacyLTM.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "e1ca813a-20d3-4442-ac03-b8c092c429b7",
-                            Description = "Administrator role",
-                            Name = "admin",
-                            NormalizedName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("PharmacyLTM.Data.Entities.AppUser", b =>
@@ -251,27 +236,6 @@ namespace PharmacyLTM.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "aa63b35b-873d-41a2-b337-7bfa6f319c14",
-                            Dob = new DateTime(2003, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "minltgcd210648@fpt.edu.vn",
-                            EmailConfirmed = true,
-                            FirstName = "Trungmin",
-                            LastName = "Le",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "minltgcd210648@fpt.edu.vn",
-                            NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAELN7Dx/yTJrdqlJsOhhHkoVQ/YadkzQ4uye3ZVu6TzC8FF3ZlpkKQKW2ObApVyigtw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("PharmacyLTM.Data.Entities.Cart", b =>
@@ -520,7 +484,7 @@ namespace PharmacyLTM.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 14, 2, 15, 25, 570, DateTimeKind.Local).AddTicks(2501));
+                        .HasDefaultValue(new DateTime(2024, 4, 13, 22, 12, 52, 160, DateTimeKind.Local).AddTicks(3023));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -613,7 +577,7 @@ namespace PharmacyLTM.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 4, 14, 2, 15, 25, 594, DateTimeKind.Local).AddTicks(7043),
+                            DateCreated = new DateTime(2024, 4, 13, 22, 12, 52, 184, DateTimeKind.Local).AddTicks(7936),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
@@ -812,7 +776,7 @@ namespace PharmacyLTM.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PharmacyLTM.Data.Entities.AppUser", "appUser")
+                    b.HasOne("PharmacyLTM.Data.Entities.AppUser", "AppUser")
                         .WithMany("Carts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
