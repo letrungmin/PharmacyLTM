@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -55,14 +55,14 @@ namespace PharmacyLTM
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllersWithViews();
+        //public void ConfigureServices(IServiceCollection services)
+        //{
+        //    services.AddControllersWithViews();
 
-            // Use 'DefaultConnection' to configure your DbContext
-            services.AddDbContext<PharmacyLTMDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("PharmacyLTMDb")));
-        }
+        //    // Use 'DefaultConnection' to configure your DbContext
+        //    services.AddDbContext<PharmacyLTMDbContext>(options =>
+        //        options.UseSqlServer(Configuration.GetConnectionString("PharmacyLTMDb")));
+        //}
 
 
     }
