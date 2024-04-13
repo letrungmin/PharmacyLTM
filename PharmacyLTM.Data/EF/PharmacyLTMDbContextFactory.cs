@@ -17,10 +17,10 @@ namespace PharmacyLTM.Data.EF
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            var connectionString = configuration.GetConnectionString("PharmacyLTMDb");
+            var ConnectionStrings = configuration.GetConnectionString("PharmacyLTMDb");
 
             var optionsBuilder = new DbContextOptionsBuilder<PharmacyLTMDbContext>();
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(ConnectionStrings);
 
             return new PharmacyLTMDbContext(optionsBuilder.Options);
         }
