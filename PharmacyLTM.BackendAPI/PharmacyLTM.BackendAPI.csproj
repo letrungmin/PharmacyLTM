@@ -1,14 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-	  <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PharmacyLTM.Application\PharmacyLTM.Application.csproj" />
     <ProjectReference Include="..\PharmacyLTM.Data\PharmacyLTM.Data.csproj" />
     <ProjectReference Include="..\PharmacyLTM.Utilities\PharmacyLTM.Utilities.csproj" />
     <ProjectReference Include="..\PharmacyLTM.ViewModels\PharmacyLTM.ViewModels.csproj" />

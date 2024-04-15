@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PharmacyLTM.Data.EF;
 
 namespace PharmacyLTM.Data.Migrations
 {
     [DbContext(typeof(PharmacyLTMDbContext))]
-    partial class PharmacyLTMDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240414114852_AddProductmageTable")]
+    partial class AddProductmageTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,7 +182,7 @@ namespace PharmacyLTM.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "d59d7859-29bb-4619-a820-b8f5692a225a",
+                            ConcurrencyStamp = "e856ae53-6561-4277-aea6-81120a68e61d",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -257,7 +259,7 @@ namespace PharmacyLTM.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1025180-a65d-4a00-ac02-1ccf670ca407",
+                            ConcurrencyStamp = "69da41d4-5153-4e5f-9cb6-3b5420cc6568",
                             Dob = new DateTime(2003, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "minltgcd210648@fpt.edu.vn",
                             EmailConfirmed = true,
@@ -266,7 +268,7 @@ namespace PharmacyLTM.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "minltgcd210648@fpt.edu.vn",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF4vL2v/pduZox0Mj3zyAP6uaxR2en26HB/LZQhZGGfMC5zPqA1W/QYg/86nrbBESg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP0A8K/cLwvUrwRZQklYoHBrmGWGsJdQ/JMkTTpmx8ySOhlxcZID1BnAQ3sjV7cTtA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -611,7 +613,7 @@ namespace PharmacyLTM.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 4, 15, 2, 34, 54, 636, DateTimeKind.Local).AddTicks(4233),
+                            DateCreated = new DateTime(2024, 4, 14, 18, 48, 51, 135, DateTimeKind.Local).AddTicks(4946),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
@@ -635,8 +637,8 @@ namespace PharmacyLTM.Data.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("FileSize")
-                        .HasColumnType("bigint");
+                    b.Property<int>("FileSize")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImagePath")
                         .IsRequired()
