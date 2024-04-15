@@ -11,7 +11,6 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using PharmacyLTM.ViewModels.Catalog.Products.Manage;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using PharmacyLTM.Application.Common;
@@ -102,7 +101,7 @@ namespace PharmacyLTM.Application.Catalog.Products
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<PageResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request, PharmacyLTMDbContext _context)
+        public async Task<PageResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request, PharmacyLTMDbContext _context)
         {
             //1. Select join
             var query = from p in _context.Products
@@ -111,8 +110,8 @@ namespace PharmacyLTM.Application.Catalog.Products
                         join c in _context.Categories on pic.CategoryId equals c.Id
                         select new { p, pt, pic };
             //2. filter
-            if (!string.IsNullOrEmpty(request.KeyWord))
-                query = query.Where(x => x.pt.Name.Contains(request.KeyWord));
+            if (!string.IsNullOrEmpty(request.Keyword))
+                query = query.Where(x => x.pt.Name.Contains(request.Keyword));
 
             if (request.CategoryIds.Count > 0)
             {
@@ -149,7 +148,7 @@ namespace PharmacyLTM.Application.Catalog.Products
             return pageResult;
         }
 
-        public Task<PageResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request)
+        public Task<PageResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request)
         {
             throw new NotImplementedException();
         }

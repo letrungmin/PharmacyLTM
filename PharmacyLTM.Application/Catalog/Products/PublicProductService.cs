@@ -5,7 +5,6 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PharmacyLTM.ViewModels.Common;
 using PharmacyLTM.ViewModels.Catalog.Products;
-using PharmacyLTM.ViewModels.Catalog.Products.Public;
 using System;
 
 namespace PharmacyLTM.Application.Catalog.Products
@@ -46,7 +45,7 @@ namespace PharmacyLTM.Application.Catalog.Products
 
         }
 
-        public async Task<PageResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request)
+        public async Task<PageResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request)
         {
             //1. Select join
             var query = from p in _context.Products
@@ -90,9 +89,5 @@ namespace PharmacyLTM.Application.Catalog.Products
             return pagedResult;
         }
 
-        public Task<PageResult<ProductViewModel>> GetAllByCategoryId(ViewModels.Catalog.Products.Manage.GetProductPagingRequest request)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PharmacyLTM.ViewModels.Catalog.Products.Manage
+namespace PharmacyLTM.ViewModels.Catalog.Products
 {
     public class ProductCreateRequest
     {
@@ -18,6 +18,6 @@ namespace PharmacyLTM.ViewModels.Catalog.Products.Manage
         public string LanguageId { set; get; }
         public decimal OriginalPrice { set; get; }
         public int Stock { set; get; }
-        public IFormFile ThumbnailImage {  set; get; }
+        public IFormFile ThumbnailImage { set; get; }
     }
 }
