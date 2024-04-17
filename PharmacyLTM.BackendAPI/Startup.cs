@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PharmacyLTM.Application.Catalog.Products;
+using PharmacyLTM.Application.Common;
 using PharmacyLTM.Data.EF;
 using PharmacyLTM.Utilities.Constants;
 using System;
@@ -32,7 +33,9 @@ namespace PharmacyLTM.BackendAPI
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
 
             //Declare DI
+            services.AddTransient<IStorageService, FileStorageService>();
             services.AddTransient<IPublicProductService, PublicProductService>();
+            services.AddTransient<IManageProductService, ManageProductService>();
             services.AddControllersWithViews();
 
             services.AddSwaggerGen(c =>
