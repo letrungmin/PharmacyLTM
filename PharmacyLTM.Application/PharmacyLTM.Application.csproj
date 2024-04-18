@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PharmacyLTM.Data\PharmacyLTM.Data.csproj" />
     <ProjectReference Include="..\PharmacyLTM.Utilities\PharmacyLTM.Utilities.csproj" />
     <ProjectReference Include="..\PharmacyLTM.ViewModels\PharmacyLTM.ViewModels.csproj" />
