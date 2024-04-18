@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.ViewModels.Catalog.ProductImages;
@@ -9,6 +10,7 @@ namespace PharmacyLTM.BackendAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly IPublicProductService _publicProductService;
