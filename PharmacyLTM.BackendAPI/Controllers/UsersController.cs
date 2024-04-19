@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using PharmacyLTM.Application.System.User;
 using PharmacyLTM.ViewModels.System.Users;
 using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PharmacyLTM.BackendAPI.Controllers
 {
@@ -20,7 +23,7 @@ namespace PharmacyLTM.BackendAPI.Controllers
 
         [HttpPost("authenticate")]
         [AllowAnonymous]
-        public async Task<IActionResult> Authenticate([FromForm] LoginRequest request)
+        public async Task<IActionResult> Authenticate([FromBody] LoginRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -35,7 +38,7 @@ namespace PharmacyLTM.BackendAPI.Controllers
 
         [HttpPost("register")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register([FromForm] RegisterRequest request)
+        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
