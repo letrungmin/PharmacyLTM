@@ -1,18 +1,16 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using PharmacyLTM.Data.Entities;
+using PharmacyLTM.ViewModels.System.Users;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using PharmacyLTM.Data.Entities;
-using PharmacyLTM.ViewModels.System.Users;
+using PharmacyLTM.Application.System.User;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PharmacyLTM.Application.System.User
+namespace PharmacyLTM.Application.System.Users
 {
     public class UserService : IUserService
     {
@@ -45,10 +43,10 @@ namespace PharmacyLTM.Application.System.User
             {
                 new Claim(ClaimTypes.Email,user.Email),
                 new Claim(ClaimTypes.GivenName,user.FirstName),
-                new Claim(ClaimTypes.Role, string.Join(";",roles))
+                new Claim(ClaimTypes.Role, string.Join(";",roles)),
+                new Claim(ClaimTypes.Name, request.UserName)
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is my custom Secret key for authnetication"));
-
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(_config["Tokens:Issuer"],

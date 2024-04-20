@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmacyLTM.Application.System.User;
 using PharmacyLTM.ViewModels.System.Users;
-using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PharmacyLTM.BackendAPI.Controllers
 {
@@ -29,11 +29,11 @@ namespace PharmacyLTM.BackendAPI.Controllers
                 return BadRequest(ModelState);
 
             var resultToken = await _userService.Authencate(request);
-            if (string.IsNullOrEmpty(resultToken))  
+            if (string.IsNullOrEmpty(resultToken))
             {
                 return BadRequest("Username or password is incorrect.");
             }
-            return Ok(new { token = resultToken });
+            return Ok(resultToken);
         }
 
         [HttpPost("register")]

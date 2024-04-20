@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -13,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.Application.Common;
 using PharmacyLTM.Application.System.User;
+using PharmacyLTM.Application.System.Users;
 using PharmacyLTM.Data.EF;
 using PharmacyLTM.Data.Entities;
 using PharmacyLTM.Utilities.Constants;
@@ -41,6 +43,7 @@ namespace PharmacyLTM.BackendAPI
 
             //Declare DI
             services.AddTransient<IStorageService, FileStorageService>();
+
             services.AddTransient<IPublicProductService, PublicProductService>();
             services.AddTransient<IManageProductService, ManageProductService>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
@@ -51,10 +54,8 @@ namespace PharmacyLTM.BackendAPI
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
 
-
             services.AddControllers()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
-
 
             services.AddSwaggerGen(c =>
             {
@@ -89,6 +90,7 @@ namespace PharmacyLTM.BackendAPI
                       }
                     });
             });
+
             string issuer = Configuration.GetValue<string>("Tokens:Issuer");
             string signingKey = Configuration.GetValue<string>("Tokens:Key");
             byte[] signingKeyBytes = System.Text.Encoding.UTF8.GetBytes(signingKey);
@@ -131,17 +133,18 @@ namespace PharmacyLTM.BackendAPI
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
+
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger PharmacyLTM V1");
             });
-
 
             app.UseEndpoints(endpoints =>
             {
