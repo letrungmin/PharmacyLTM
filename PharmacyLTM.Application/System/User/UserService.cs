@@ -78,7 +78,8 @@ namespace PharmacyLTM.Application.System.Users
                 FirstName = user.FirstName,
                 Dob = user.Dob,
                 Id = user.Id,
-                LastName = user.LastName
+                LastName = user.LastName,
+                UserName = user.UserName
             };
             return new ApiSuccessResult<UserVm>(userVm);
         }
@@ -108,12 +109,14 @@ namespace PharmacyLTM.Application.System.Users
                 }).ToListAsync();
 
             //4. Select and projection
-            var PageResult = new PageResult<UserVm>()
+            var pagedResult = new PageResult<UserVm>()
             {
-                TotalRecord = totalRow,
+                TotalRecords = totalRow,
+                PageIndex = request.PageIndex,
+                PageSize = request.PageSize,
                 Items = data
             };
-            return new ApiSuccessResult<PageResult<UserVm>>(PageResult);
+            return new ApiSuccessResult<PageResult<UserVm>>(pagedResult);
         }
 
         public async Task<ApiResult<bool>> Register(RegisterRequest request)

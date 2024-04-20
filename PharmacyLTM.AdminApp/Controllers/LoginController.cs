@@ -15,7 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using PharmacyLTM.AdminApp.Services;
 using PharmacyLTM.ViewModels.System.Users;
 
-namespace eShopSolution.AdminApp.Controllers
+namespace PharmacyLTM.AdminApp.Controllers
 {
     public class LoginController : Controller
     {

@@ -29,7 +29,7 @@ namespace PharmacyLTM.AdminApp.Controllers
             _configuration = configuration;
         }
 
-        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 10)
+        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 1)
         {
             var request = new GetUserPagingRequest()
             {
@@ -39,6 +39,13 @@ namespace PharmacyLTM.AdminApp.Controllers
             };
             var data = await _userApiClient.GetUsersPagings(request);
             return View(data.ResultObj);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var result = await _userApiClient.GetById(id);
+            return View(result.ResultObj);
         }
 
         [HttpGet]

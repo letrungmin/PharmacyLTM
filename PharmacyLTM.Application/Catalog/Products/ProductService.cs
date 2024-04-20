@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.Application.Common;
 using PharmacyLTM.Data.EF;
 using PharmacyLTM.Data.Entities;
@@ -157,7 +158,9 @@ namespace PharmacyLTM.Application.Catalog.Products
             //4. Select and projection
             var PageResult = new PageResult<ProductViewModel>()
             {
-                TotalRecord = totalRow,
+                TotalRecords = totalRow,
+                PageSize = request.PageSize,
+                PageIndex = request.PageIndex,
                 Items = data
             };
             return PageResult;
@@ -341,7 +344,9 @@ namespace PharmacyLTM.Application.Catalog.Products
             //4. Select and projection
             var PageResult = new PageResult<ProductViewModel>()
             {
-                TotalRecord = totalRow,
+                TotalRecords = totalRow,
+                PageSize = request.PageSize,
+                PageIndex = request.PageIndex,
                 Items = data
             };
             return PageResult;
