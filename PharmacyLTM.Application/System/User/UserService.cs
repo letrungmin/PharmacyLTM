@@ -64,6 +64,20 @@ namespace PharmacyLTM.Application.System.Users
             return new ApiSuccessResult<string>(new JwtSecurityTokenHandler().WriteToken(token));
         }
 
+        public async Task<ApiResult<bool>> Delete(Guid id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("User không tồn tại");
+            }
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+                return new ApiSuccessResult<bool>();
+
+            return new ApiErrorResult<bool>("Xóa không thành công");
+        }
+
         public async Task<ApiResult<UserVm>> GetById(Guid id)
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
@@ -109,14 +123,14 @@ namespace PharmacyLTM.Application.System.Users
                 }).ToListAsync();
 
             //4. Select and projection
-            var pagedResult = new PageResult<UserVm>()
+            var PageResult = new PageResult<UserVm>()
             {
                 TotalRecords = totalRow,
                 PageIndex = request.PageIndex,
                 PageSize = request.PageSize,
                 Items = data
             };
-            return new ApiSuccessResult<PageResult<UserVm>>(pagedResult);
+            return new ApiSuccessResult<PageResult<UserVm>>(PageResult);
         }
 
         public async Task<ApiResult<bool>> Register(RegisterRequest request)

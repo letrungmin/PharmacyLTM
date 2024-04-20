@@ -17,5 +17,7 @@ namespace PharmacyLTM.Application.System.Users
         Task<ApiResult<PageResult<UserVm>>> GetUsersPaging(GetUserPagingRequest request);
 
         Task<ApiResult<UserVm>> GetById(Guid id);
+
+        Task<ApiResult<bool>> Delete(Guid id);
     }
 }
