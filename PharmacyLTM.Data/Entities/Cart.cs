@@ -18,6 +18,6 @@ namespace PharmacyLTM.Data.Entities
         public DateTime DateCreated { get; set; }
 
 
-        public AppUser appUser { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }
