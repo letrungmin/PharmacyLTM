@@ -3,12 +3,13 @@ using PharmacyLTM.ViewModels.System.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using PharmacyLTM.Application.System.User;
+using PharmacyLTM.Application.System.Users;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using PharmacyLTM.ViewModels.Common;
 
 namespace PharmacyLTM.Application.System.Users
 {
@@ -56,6 +57,11 @@ namespace PharmacyLTM.Application.System.Users
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public Task<PageResult<UserVm>> GetUsersPaging(GetUserPagingRequest request)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<bool> Register(RegisterRequest request)

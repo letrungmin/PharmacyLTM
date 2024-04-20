@@ -13,7 +13,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.Application.Common;
-using PharmacyLTM.Application.System.User;
 using PharmacyLTM.Application.System.Users;
 using PharmacyLTM.Data.EF;
 using PharmacyLTM.Data.Entities;
@@ -43,9 +42,7 @@ namespace PharmacyLTM.BackendAPI
 
             //Declare DI
             services.AddTransient<IStorageService, FileStorageService>();
-
-            services.AddTransient<IPublicProductService, PublicProductService>();
-            services.AddTransient<IManageProductService, ManageProductService>();
+            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
