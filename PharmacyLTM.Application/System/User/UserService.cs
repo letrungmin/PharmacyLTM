@@ -71,8 +71,8 @@ namespace PharmacyLTM.Application.System.Users
             {
                 return new ApiErrorResult<bool>("User không tồn tại");
             }
-            var reult = await _userManager.DeleteAsync(user);
-            if (reult.Succeeded)
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
                 return new ApiSuccessResult<bool>();
 
             return new ApiErrorResult<bool>("Xóa không thành công");
