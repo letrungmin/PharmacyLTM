@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.Application.Common;
+using PharmacyLTM.Application.System.Roles;
 using PharmacyLTM.Application.System.Users;
 using PharmacyLTM.Data.EF;
 using PharmacyLTM.Data.Entities;
@@ -42,11 +43,13 @@ namespace PharmacyLTM.BackendAPI
 
             //Declare DI
             services.AddTransient<IStorageService, FileStorageService>();
+
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRoleService, RoleService>();
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
@@ -56,7 +59,7 @@ namespace PharmacyLTM.BackendAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger PharmacyLTM", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger PharmacyLTM ", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
