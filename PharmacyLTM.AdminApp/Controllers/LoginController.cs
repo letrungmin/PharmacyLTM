@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using PharmacyLTM.AdminApp.Services;
+using PharmacyLTM.Utilities.Constants;
 using PharmacyLTM.ViewModels.System.Users;
 
 namespace PharmacyLTM.AdminApp.Controllers
@@ -40,7 +41,7 @@ namespace PharmacyLTM.AdminApp.Controllers
         public async Task<IActionResult> Index(LoginRequest request)
         {
             if (!ModelState.IsValid)
-                return View(request);
+                return View(ModelState);
 
             var result = await _userApiClient.Authenticate(request);
             if (result.ResultObj == null)
@@ -54,7 +55,8 @@ namespace PharmacyLTM.AdminApp.Controllers
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
                 IsPersistent = false
             };
-            HttpContext.Session.SetString("Token", result.ResultObj);
+            HttpContext.Session.SetString(SystemConstants.AppSettings.DefaultLanguageId, _configuration[SystemConstants.AppSettings.DefaultLanguageId]);
+            HttpContext.Session.SetString(SystemConstants.AppSettings.Token, result.ResultObj);
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,

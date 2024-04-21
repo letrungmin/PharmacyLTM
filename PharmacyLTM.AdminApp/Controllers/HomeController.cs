@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PharmacyLTM.AdminApp.Models;
 using Microsoft.AspNetCore.Authorization;
+using PharmacyLTM.Utilities.Constants;
+using Microsoft.AspNetCore.Http;
 
 namespace PharmacyLTM.AdminApp.Controllers
 {
@@ -34,6 +36,15 @@ namespace PharmacyLTM.AdminApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult Language(NavigationViewModel viewModel)
+        {
+            HttpContext.Session.SetString(SystemConstants.AppSettings.DefaultLanguageId,
+                viewModel.CurrentLanguageId);
+
+            return RedirectToAction("Index");
         }
     }
 }
