@@ -5,7 +5,7 @@ using PharmacyLTM.ViewModels.Catalog.ProductImages;
 using PharmacyLTM.ViewModels.Catalog.Products;
 using System.Threading.Tasks;
 
-namespace PharmacyLTM.BackendApi.Controllers
+namespace PharmacyLTM.BackendAPI.Controllers
 {
     //api/products
     [Route("api/[controller]")]
@@ -38,6 +38,7 @@ namespace PharmacyLTM.BackendApi.Controllers
         }
 
         [HttpPost]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Create([FromForm] ProductCreateRequest request)
         {
             if (!ModelState.IsValid)

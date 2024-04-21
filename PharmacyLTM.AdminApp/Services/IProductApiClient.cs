@@ -11,5 +11,7 @@ namespace PharmacyLTM.AdminApp.Services
     public interface IProductApiClient
     {
         Task<PageResult<ProductVm>> GetPagings(GetManageProductPagingRequest request);
+
+        Task<bool> CreateProduct(ProductCreateRequest request);
     }
 }
