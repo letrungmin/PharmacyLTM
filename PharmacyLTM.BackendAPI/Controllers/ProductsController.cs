@@ -1,11 +1,11 @@
-﻿using PharmacyLTM.Application.Catalog.Products;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.ViewModels.Catalog.ProductImages;
 using PharmacyLTM.ViewModels.Catalog.Products;
 using System.Threading.Tasks;
 
-namespace PharmacyLTM.BackendAPI.Controllers
+namespace PharmacyLTM.BackendApi.Controllers
 {
     //api/products
     [Route("api/[controller]")]
@@ -21,15 +21,13 @@ namespace PharmacyLTM.BackendAPI.Controllers
             _productService = productService;
         }
 
-        //http://localhost:port/products?pageIndex=1&pageSize=10&CategoryId=
-        [HttpGet("{languageId}")]
-        public async Task<IActionResult> GetAllPaging(string languageId, [FromQuery] GetPublicProductPagingRequest request)
+        [HttpGet("paging")]
+        public async Task<IActionResult> GetAllPaging([FromQuery] GetManageProductPagingRequest request)
         {
-            var products = await _productService.GetAllByCategoryId(languageId, request);
+            var products = await _productService.GetAllPaging(request);
             return Ok(products);
         }
 
-        //http://localhost:port/product/1
         [HttpGet("{productId}/{languageId}")]
         public async Task<IActionResult> GetById(int productId, string languageId)
         {
