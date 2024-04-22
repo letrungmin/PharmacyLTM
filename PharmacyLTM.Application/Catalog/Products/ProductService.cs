@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using PharmacyLTM.Data.EF;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.Application.Common;
-using PharmacyLTM.Data.EF;
 using PharmacyLTM.Data.Entities;
-using PharmacyLTM.Utilities.Exceptions;
 using PharmacyLTM.ViewModels.Catalog.ProductImages;
 using PharmacyLTM.ViewModels.Catalog.Products;
 using PharmacyLTM.ViewModels.Common;
@@ -15,6 +14,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using PharmacyLTM.Utilities.Exceptions;
 
 namespace PharmacyLTM.Application.Catalog.Products
 {
@@ -127,7 +127,7 @@ namespace PharmacyLTM.Application.Catalog.Products
                         join c in _context.Categories on pic.CategoryId equals c.Id into picc
                         from c in picc.DefaultIfEmpty()
                         where pt.LanguageId == request.LanguageId
-                        select new { p, pt, pic, c };
+                        select new { p, pt, pic };
             //2. filter
             if (!string.IsNullOrEmpty(request.Keyword))
                 query = query.Where(x => x.pt.Name.Contains(request.Keyword));

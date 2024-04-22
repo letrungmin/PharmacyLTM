@@ -138,17 +138,17 @@ namespace PharmacyLTM.Data.Migrations
                         new
                         {
                             Key = "HomeTitle",
-                            Value = "This is home page of eShopSolution"
+                            Value = "This is home page of PharmacyLTM"
                         },
                         new
                         {
                             Key = "HomeKeyword",
-                            Value = "This is keyword of eShopSolution"
+                            Value = "This is keyword of PharmacyLTM"
                         },
                         new
                         {
                             Key = "HomeDescription",
-                            Value = "This is description of eShopSolution"
+                            Value = "This is description of PharmacyLTM"
                         });
                 });
 
@@ -180,7 +180,7 @@ namespace PharmacyLTM.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "d59d7859-29bb-4619-a820-b8f5692a225a",
+                            ConcurrencyStamp = "54f091a7-bb7b-4340-ba70-19c24e994254",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -257,7 +257,7 @@ namespace PharmacyLTM.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1025180-a65d-4a00-ac02-1ccf670ca407",
+                            ConcurrencyStamp = "76e959f2-51d2-4f5b-b234-6654f79d606f",
                             Dob = new DateTime(2003, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "minltgcd210648@fpt.edu.vn",
                             EmailConfirmed = true,
@@ -266,7 +266,7 @@ namespace PharmacyLTM.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "minltgcd210648@fpt.edu.vn",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF4vL2v/pduZox0Mj3zyAP6uaxR2en26HB/LZQhZGGfMC5zPqA1W/QYg/86nrbBESg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENfbexE43AmgdqsCfumngaKEvmeX/PYYoipZ4n5qBBIecgdziKCXmoxJvq/o2UlgKg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -400,7 +400,7 @@ namespace PharmacyLTM.Data.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            LanguageId = "vi-VN",
+                            LanguageId = "vi",
                             Name = "Áo nam",
                             SeoAlias = "ao-nam",
                             SeoDescription = "Sản phẩm áo thời trang nam",
@@ -410,7 +410,7 @@ namespace PharmacyLTM.Data.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            LanguageId = "en-US",
+                            LanguageId = "en",
                             Name = "Men Shirt",
                             SeoAlias = "men-shirt",
                             SeoDescription = "The shirt products for men",
@@ -420,7 +420,7 @@ namespace PharmacyLTM.Data.Migrations
                         {
                             Id = 3,
                             CategoryId = 2,
-                            LanguageId = "vi-VN",
+                            LanguageId = "vi",
                             Name = "Áo nữ",
                             SeoAlias = "ao-nu",
                             SeoDescription = "Sản phẩm áo thời trang nữ",
@@ -430,7 +430,7 @@ namespace PharmacyLTM.Data.Migrations
                         {
                             Id = 4,
                             CategoryId = 2,
-                            LanguageId = "en-US",
+                            LanguageId = "en",
                             Name = "Women Shirt",
                             SeoAlias = "women-shirt",
                             SeoDescription = "The shirt products for women",
@@ -496,13 +496,13 @@ namespace PharmacyLTM.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "vi-VN",
+                            Id = "vi",
                             IsDefault = true,
                             Name = "Tiếng Việt"
                         },
                         new
                         {
-                            Id = "en-US",
+                            Id = "en",
                             IsDefault = false,
                             Name = "English"
                         });
@@ -611,7 +611,7 @@ namespace PharmacyLTM.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 4, 15, 2, 34, 54, 636, DateTimeKind.Local).AddTicks(4233),
+                            DateCreated = new DateTime(2024, 4, 23, 6, 19, 59, 663, DateTimeKind.Local).AddTicks(4090),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
@@ -736,7 +736,7 @@ namespace PharmacyLTM.Data.Migrations
                             Id = 1,
                             Description = "Áo sơ mi nam trắng Việt Tiến",
                             Details = "Áo sơ mi nam trắng Việt Tiến",
-                            LanguageId = "vi-VN",
+                            LanguageId = "vi",
                             Name = "Áo sơ mi nam trắng Việt Tiến",
                             ProductId = 1,
                             SeoAlias = "ao-so-mi-nam-trang-viet-tien",
@@ -748,7 +748,7 @@ namespace PharmacyLTM.Data.Migrations
                             Id = 2,
                             Description = "Viet Tien Men T-Shirt",
                             Details = "Viet Tien Men T-Shirt",
-                            LanguageId = "en-US",
+                            LanguageId = "en",
                             Name = "Viet Tien Men T-Shirt",
                             ProductId = 1,
                             SeoAlias = "viet-tien-men-t-shirt",
@@ -850,7 +850,7 @@ namespace PharmacyLTM.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PharmacyLTM.Data.Entities.AppUser", "appUser")
+                    b.HasOne("PharmacyLTM.Data.Entities.AppUser", "AppUser")
                         .WithMany("Carts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
