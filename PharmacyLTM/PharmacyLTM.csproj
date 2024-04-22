@@ -15,9 +15,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\PharmacyLTM.Application\PharmacyLTM.Application.csproj" />
-    <ProjectReference Include="..\PharmacyLTM.Data\PharmacyLTM.Data.csproj" />
-  </ItemGroup>
-
 </Project>
