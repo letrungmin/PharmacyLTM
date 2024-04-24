@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PharmacyLTM.ApiIntegration\PharmacyLTM.ApiIntegration.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="LocalizationResources\ExpressLocalizationResource.en.resx">
       <Generator></Generator>
     </EmbeddedResource>

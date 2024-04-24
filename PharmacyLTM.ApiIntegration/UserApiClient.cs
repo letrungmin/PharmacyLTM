@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using PharmacyLTM.AdminApp.Services;
 using PharmacyLTM.ViewModels.Common;
 using PharmacyLTM.ViewModels.System.Users;
 using System;
@@ -12,7 +11,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PharmacyLTM.AdminApp.Services
+namespace PharmacyLTM.ApiIntegration
 {
     public class UserApiClient : IUserApiClient
     {

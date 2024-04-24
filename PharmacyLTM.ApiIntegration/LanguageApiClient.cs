@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using PharmacyLTM.AdminApp.Services;
 using PharmacyLTM.ViewModels.Common;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace PharmacyLTM.AdminApp.Services
+namespace PharmacyLTM.ApiIntegration
 {
     public class LanguageApiClient : BaseApiClient, ILanguageApiClient
     {

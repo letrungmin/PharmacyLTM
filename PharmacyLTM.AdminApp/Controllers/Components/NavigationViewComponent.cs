@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmacyLTM.AdminApp.Models;
-using PharmacyLTM.AdminApp.Services;
+using PharmacyLTM.ApiIntegration;
 using PharmacyLTM.Utilities.Constants;
 using System.Threading.Tasks;
 

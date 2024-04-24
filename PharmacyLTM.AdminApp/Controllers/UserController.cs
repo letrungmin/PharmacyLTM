@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using PharmacyLTM.AdminApp.Controllers;
-using PharmacyLTM.AdminApp.Services;
+using PharmacyLTM.ApiIntegration;
 using PharmacyLTM.ViewModels.Common;
 using PharmacyLTM.ViewModels.System.Users;
 

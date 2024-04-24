@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
-using PharmacyLTM.AdminApp.Services;
+using PharmacyLTM.ApiIntegration;
 using PharmacyLTM.Utilities.Constants;
 using PharmacyLTM.ViewModels.System.Users;
 
