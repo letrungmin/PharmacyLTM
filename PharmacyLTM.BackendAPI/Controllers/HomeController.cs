@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using PharmacyLTM.BackendAPI.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using PharmacyLTM.BackendAPI.Models;
 
 namespace PharmacyLTM.BackendAPI.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -22,7 +20,6 @@ namespace PharmacyLTM.BackendAPI.Controllers
 
         public IActionResult Index()
         {
-            var user = User.Identity.Name;
             return Ok();
         }
     }

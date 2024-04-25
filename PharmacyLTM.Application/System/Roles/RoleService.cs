@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PharmacyLTM.Application.System.Roles;
 using PharmacyLTM.Data.Entities;
 using PharmacyLTM.ViewModels.System.Roles;
 using System;

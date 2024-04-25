@@ -17,6 +17,7 @@ using PharmacyLTM.Application.Common;
 using PharmacyLTM.Application.System.Languages;
 using PharmacyLTM.Application.System.Roles;
 using PharmacyLTM.Application.System.Users;
+using PharmacyLTM.Application.Utilities.Slides;
 using PharmacyLTM.Data.EF;
 using PharmacyLTM.Data.Entities;
 using PharmacyLTM.Utilities.Constants;
@@ -53,6 +54,8 @@ namespace PharmacyLTM.BackendAPI
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<ILanguageService, LanguageService>();
+            services.AddTransient<ISlideService, SlideService>();
+
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IUserService, UserService>();
 
@@ -64,7 +67,7 @@ namespace PharmacyLTM.BackendAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger PharmacyLTM", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger PharmacyLTM ", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

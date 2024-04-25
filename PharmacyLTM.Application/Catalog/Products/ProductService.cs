@@ -1,7 +1,6 @@
 ﻿using PharmacyLTM.Data.EF;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.Application.Common;
 using PharmacyLTM.Data.Entities;
 using PharmacyLTM.ViewModels.Catalog.ProductImages;
@@ -83,7 +82,7 @@ namespace PharmacyLTM.Application.Catalog.Products
             //Save image
             if (request.ThumbnailImage != null)
             {
-                product.productImages = new List<ProductImage>()
+                product.ProductImages = new List<ProductImage>()
                 {
                     new ProductImage()
                     {
@@ -390,6 +389,41 @@ namespace PharmacyLTM.Application.Catalog.Products
             }
             await _context.SaveChangesAsync();
             return new ApiSuccessResult<bool>();
+        }
+
+        public async Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take)
+        {
+            //1. Select join
+            var query = from p in _context.Products
+                        join pt in _context.ProductTranslations on p.Id equals pt.ProductId
+                        join pic in _context.ProductInCategories on p.Id equals pic.ProductId into ppic
+                        //join pi in _context.ProductImages.Where(x => x.IsDefault == true) on p.Id equals pi.ProductId
+                        from pic in ppic.DefaultIfEmpty()
+                        join c in _context.Categories on pic.CategoryId equals c.Id into picc
+                        from c in picc.DefaultIfEmpty()
+                        where pt.LanguageId == languageId
+                        select new { p, pt, pic };
+
+            var data = await query.OrderByDescending(x => x.p.DateCreated).Take(take)
+                .Select(x => new ProductVm()
+                {
+                    Id = x.p.Id,
+                    Name = x.pt.Name,
+                    DateCreated = x.p.DateCreated,
+                    Description = x.pt.Description,
+                    Details = x.pt.Details,
+                    LanguageId = x.pt.LanguageId,
+                    OriginalPrice = x.p.OriginalPrice,
+                    Price = x.p.Price,
+                    SeoAlias = x.pt.SeoAlias,
+                    SeoDescription = x.pt.SeoDescription,
+                    SeoTitle = x.pt.SeoTitle,
+                    Stock = x.p.Stock,
+                    ViewCount = x.p.ViewCount,
+                    //ThumbnailImage = x.pi.ImagePath
+                }).ToListAsync();
+
+            return data;
         }
     }
 }

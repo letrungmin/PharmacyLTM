@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using PharmacyLTM.Application.Utilities.Slides;
 
 namespace PharmacyLTM.BackendAPI.Controllers
 {
@@ -16,9 +17,9 @@ namespace PharmacyLTM.BackendAPI.Controllers
     [Authorize]
     public class RolesController : ControllerBase
     {
-        private readonly IRoleService _roleService;
+        private readonly ISlideService _roleService;
 
-        public RolesController(IRoleService roleService)
+        public RolesController(ISlideService roleService)
         {
             _roleService = roleService;
         }
