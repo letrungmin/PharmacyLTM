@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using PharmacyLTM.ViewModels.Catalog.ProductImages;
+﻿using PharmacyLTM.ViewModels.Catalog.ProductImages;
 using PharmacyLTM.ViewModels.Catalog.Products;
 using PharmacyLTM.ViewModels.Common;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -39,5 +39,7 @@ namespace PharmacyLTM.Application.Catalog.Products
         Task<ApiResult<bool>> CategoryAssign(int id, CategoryAssignRequest request);
 
         Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take);
+
+        Task<List<ProductVm>> GetLatestProducts(string languageId, int take);
     }
 }

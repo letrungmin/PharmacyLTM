@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using PharmacyLTM.Application.Catalog.Products;
+﻿using PharmacyLTM.Application.Catalog.Products;
 using PharmacyLTM.ViewModels.Catalog.ProductImages;
 using PharmacyLTM.ViewModels.Catalog.Products;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace PharmacyLTM.BackendAPI.Controllers
@@ -42,6 +42,14 @@ namespace PharmacyLTM.BackendAPI.Controllers
         public async Task<IActionResult> GetFeaturedProducts(int take, string languageId)
         {
             var products = await _productService.GetFeaturedProducts(languageId, take);
+            return Ok(products);
+        }
+
+        [HttpGet("latest/{languageId}/{take}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetLatestProducts(int take, string languageId)
+        {
+            var products = await _productService.GetLatestProducts(languageId, take);
             return Ok(products);
         }
 

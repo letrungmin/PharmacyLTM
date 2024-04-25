@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PharmacyLTM.Application.Catalog.Categories;
-using PharmacyLTM.Data.Entities;
 
 namespace PharmacyLTM.Application.Catalog.Categories
 {
@@ -24,12 +23,13 @@ namespace PharmacyLTM.Application.Catalog.Categories
         {
             var query = from c in _context.Categories
                         join ct in _context.CategoryTranslations on c.Id equals ct.CategoryId
-            where ct.LanguageId == languageId
+                        where ct.LanguageId == languageId
                         select new { c, ct };
             return await query.Select(x => new CategoryVm()
             {
                 Id = x.c.Id,
-                Name = x.ct.Name
+                Name = x.ct.Name,
+                ParentId = x.c.ParentId
             }).ToListAsync();
         }
     }

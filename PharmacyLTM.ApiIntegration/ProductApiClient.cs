@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
-using PharmacyLTM.ApiIntegration;
-using PharmacyLTM.Utilities.Constants;
+﻿using PharmacyLTM.Utilities.Constants;
 using PharmacyLTM.ViewModels.Catalog.Products;
 using PharmacyLTM.ViewModels.Common;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -113,6 +112,12 @@ namespace PharmacyLTM.ApiIntegration
         public async Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take)
         {
             var data = await GetListAsync<ProductVm>($"/api/products/featured/{languageId}/{take}");
+            return data;
+        }
+
+        public async Task<List<ProductVm>> GetLatestProducts(string languageId, int take)
+        {
+            var data = await GetListAsync<ProductVm>($"/api/products/latest/{languageId}/{take}");
             return data;
         }
     }

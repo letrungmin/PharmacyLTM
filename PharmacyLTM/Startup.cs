@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using PharmacyLTM.ApiIntegration;
 using LazZiya.ExpressLocalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,7 +13,6 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PharmacyLTM.ApiIntegration;
 using PharmacyLTM.LocalizationResources;
 
 namespace PharmacyLTM
@@ -73,6 +73,7 @@ namespace PharmacyLTM
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ISlideApiClient, SlideApiClient>();
             services.AddTransient<IProductApiClient, ProductApiClient>();
+            services.AddTransient<ICategoryApiClient, CategoryApiClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,6 +99,38 @@ namespace PharmacyLTM
             app.UseRequestLocalization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "Product Category En",
+                    pattern: "{culture}/categories/{id}", new
+                    {
+                        controller = "Product",
+                        action = "Category"
+                    });
+
+                endpoints.MapControllerRoute(
+                  name: "Product Category Vn",
+                  pattern: "{culture}/danh-muc/{id}", new
+                  {
+                      controller = "Product",
+                      action = "Category"
+                  });
+
+                endpoints.MapControllerRoute(
+                    name: "Product Detail En",
+                    pattern: "{culture}/products/{id}", new
+                    {
+                        controller = "Product",
+                        action = "Detail"
+                    });
+
+                endpoints.MapControllerRoute(
+                  name: "Product Detail Vn",
+                  pattern: "{culture}/san-pham/{id}", new
+                  {
+                      controller = "Product",
+                      action = "Detail"
+                  });
+
                 endpoints.MapControllerRoute(
                      name: "default",
                      pattern: "{culture=vi}/{controller=Home}/{action=Index}/{id?}");
