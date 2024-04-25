@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using PharmacyLTM.Application.System.Languages;
+using PharmacyLTM.ViewModels.Common;
+using PharmacyLTM.ViewModels.System.Languages;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -35,7 +38,8 @@ namespace PharmacyLTM.Application.System.Languages
             var languages = await _context.Languages.Select(x => new LanguageVm()
             {
                 Id = x.Id,
-                Name = x.Name
+                Name = x.Name,
+                IsDefault = x.IsDefault
             }).ToListAsync();
             return new ApiSuccessResult<List<LanguageVm>>(languages);
         }
