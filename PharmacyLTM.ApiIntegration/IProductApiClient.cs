@@ -1,6 +1,6 @@
-﻿using PharmacyLTM.ViewModels.Catalog.Products;
+﻿using PharmacyLTM.ViewModels.System.Users;
+using PharmacyLTM.ViewModels.Catalog.Products;
 using PharmacyLTM.ViewModels.Common;
-using PharmacyLTM.ViewModels.System.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +23,7 @@ namespace PharmacyLTM.ApiIntegration
         Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take);
 
         Task<List<ProductVm>> GetLatestProducts(string languageId, int take);
+
+        Task<bool> DeleteProduct(int id);
     }
 }

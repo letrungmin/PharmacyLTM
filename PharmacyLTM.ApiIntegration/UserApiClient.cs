@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using PharmacyLTM.ViewModels.Common;
 using PharmacyLTM.ViewModels.System.Users;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -36,13 +38,50 @@ namespace PharmacyLTM.ApiIntegration
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_configuration["BaseAddress"]);
             var response = await client.PostAsync("/api/users/authenticate", httpContent);
+
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<ApiSuccessResult<string>>(await response.Content.ReadAsStringAsync());
+                // Deserialize the JSON response containing the JWT token
+                var tokenResponse = JsonConvert.DeserializeObject<ApiSuccessResult<string>>(await response.Content.ReadAsStringAsync());
+                var token = tokenResponse.ResultObj;
+
+                // Create a JwtSecurityTokenHandler
+                var handler = new JwtSecurityTokenHandler();
+
+                // Read the JWT token into a JWTSecurityToken
+                var tokenObj = handler.ReadJwtToken(token);
+
+                // Get the existing cryptographic key from the token
+                var securityKey = (SymmetricSecurityKey)tokenObj.SigningKey;
+
+                // Create a new header with the added 'kid'
+                var header = new JwtHeader();
+                foreach (var kvp in tokenObj.Header)
+                {
+                    header.Add(kvp.Key, kvp.Value);
+                }
+                header.Add("kid", "testkey");
+
+                // Create a new token with the modified header and the same payload
+                var newToken = new JwtSecurityToken(header, tokenObj.Payload);
+
+                // Serialize the new token
+                var modifiedToken = handler.WriteToken(newToken);
+
+                // Extract the original token's signature
+                var originalTokenSignature = token.Split('.')[2]; // Extract the third part (signature) of the original token
+
+                // Concatenate the modified token's header, payload, and the original signature
+                modifiedToken = $"{modifiedToken.Split('.')[0]}.{modifiedToken.Split('.')[1]}.{originalTokenSignature}";
+
+                // Return the modified token
+                return new ApiSuccessResult<string>(modifiedToken);
             }
+
 
             return JsonConvert.DeserializeObject<ApiErrorResult<string>>(await response.Content.ReadAsStringAsync());
         }
+
 
         public async Task<ApiResult<bool>> Delete(Guid id)
         {

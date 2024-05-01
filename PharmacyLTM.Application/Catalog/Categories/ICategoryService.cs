@@ -1,5 +1,4 @@
 ﻿using PharmacyLTM.ViewModels.Catalog.Categories;
-using PharmacyLTM.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,5 +9,7 @@ namespace PharmacyLTM.Application.Catalog.Categories
     public interface ICategoryService
     {
         Task<List<CategoryVm>> GetAll(string languageId);
+
+        Task<CategoryVm> GetById(string languageId, int id);
     }
 }

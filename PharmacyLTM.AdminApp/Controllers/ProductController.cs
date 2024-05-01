@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using PharmacyLTM.ApiIntegration;
-using PharmacyLTM.Utilities.Constants;
-using PharmacyLTM.ViewModels.Catalog.Products;
-using PharmacyLTM.ViewModels.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using PharmacyLTM.ApiIntegration;
+using PharmacyLTM.Utilities.Constants;
+using PharmacyLTM.ViewModels.Catalog.Products;
+using PharmacyLTM.ViewModels.Common;
+using PharmacyLTM.ViewModels.System.Products;
 
 namespace PharmacyLTM.AdminApp.Controllers
 {
@@ -162,6 +163,32 @@ namespace PharmacyLTM.AdminApp.Controllers
                 });
             }
             return categoryAssignRequest;
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(new ProductDeleteRequest()
+            {
+                Id = id
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(ProductDeleteRequest request)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var result = await _productApiClient.DeleteProduct(request.Id);
+            if (result)
+            {
+                TempData["result"] = "Xóa sản phẩm thành công";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Xóa không thành công");
+            return View(request);
         }
     }
 }
