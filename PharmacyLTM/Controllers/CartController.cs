@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PharmacyLTM.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PharmacyLTM.ApiIntegration;
+using PharmacyLTM.Models;
 using PharmacyLTM.Utilities.Constants;
 
 namespace PharmacyLTM.Controllers
@@ -23,6 +23,16 @@ namespace PharmacyLTM.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult GetListItems()
+        {
+            var session = HttpContext.Session.GetString(SystemConstants.CartSession);
+            List<CartItemViewModel> currentCart = new List<CartItemViewModel>();
+            if (session != null)
+                currentCart = JsonConvert.DeserializeObject<List<CartItemViewModel>>(session);
+            return Ok(currentCart);
         }
 
         public async Task<IActionResult> AddToCart(int id, string languageId)
@@ -46,13 +56,14 @@ namespace PharmacyLTM.Controllers
                 Description = product.Description,
                 Image = product.ThumbnailImage,
                 Name = product.Name,
+                Price = product.Price,
                 Quantity = quantity
             };
 
             currentCart.Add(cartItem);
 
             HttpContext.Session.SetString(SystemConstants.CartSession, JsonConvert.SerializeObject(currentCart));
-            return Ok();
+            return Ok(currentCart);
         }
     }
 }
