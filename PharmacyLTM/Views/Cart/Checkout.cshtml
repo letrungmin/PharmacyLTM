@@ -27,7 +27,7 @@ else
         <thead>
             <tr>
                 <th>Product</th>
-                <th>Description</th>
+                <th>Name</th>       
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Total</th>
@@ -38,7 +38,7 @@ else
             {
                 <tr>
                     <td> <img width="60" src="@(Configuration["BaseAddress"] + item.Image)" alt="" /></td>
-                    <td>@item.Description</td>
+                    <td>@item.Name</td>
                     <td>
                         @item.Quantity
                     </td>

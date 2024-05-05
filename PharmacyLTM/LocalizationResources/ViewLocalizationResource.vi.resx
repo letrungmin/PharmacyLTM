@@ -133,6 +133,10 @@
     <value>Liên Hệ</value>
     <comment>Layouts</comment>
   </data>
+  <data name="CREATE YOUR ACCOUNT" xml:space="preserve">
+    <value>Đăng Ký Tài Khoản</value>
+    <comment>/Account/Login</comment>
+  </data>
   <data name="Delivery" xml:space="preserve">
     <value>Giao Hàng</value>
     <comment>Layouts</comment>
@@ -149,12 +153,20 @@
     <value>Trang Chủ</value>
     <comment>Common</comment>
   </data>
-  <data name="Lastest Products" xml:space="preserve">
+  <data name="Itemes in your cart" xml:space="preserve">
+    <value>Sản phẩm trong giỏ hàng</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="Latest Products" xml:space="preserve">
     <value>Sản Phẩm Mới Nhất</value>
     <comment>/Home/Index</comment>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Đăng Nhập</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng Xuất</value>
     <comment>Layouts</comment>
   </data>
   <data name="More Details" xml:space="preserve">
@@ -185,8 +197,12 @@
     <value>Sản phẩm liên quan</value>
     <comment>/Product/Detail</comment>
   </data>
-  <data name="Sort by" xml:space="preserve">
-    <value>sắp xếp theo</value>
+  <data name="Sign in" xml:space="preserve">
+    <value>Đăng nhập</value>
+    <comment>/Account/Login</comment>
+  </data>
+  <data name="Sort By" xml:space="preserve">
+    <value>Sắp xếp theo</value>
     <comment>/Product/Category</comment>
   </data>
   <data name="Specials Offer" xml:space="preserve">
@@ -204,5 +220,9 @@
   <data name="View Details" xml:space="preserve">
     <value>xem chi tiết</value>
     <comment>/Product/Category</comment>
+  </data>
+  <data name="Welcome!" xml:space="preserve">
+    <value>XIN CHÀO!</value>
+    <comment>Layouts</comment>
   </data>
 </root>

@@ -42,5 +42,10 @@ namespace PharmacyLTM.ApiIntegration
             }
             return JsonConvert.DeserializeObject<ApiErrorResult<List<RoleVm>>>(body);
         }
+
+        public Task<RoleVm> GetById(string languageId, Guid id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
