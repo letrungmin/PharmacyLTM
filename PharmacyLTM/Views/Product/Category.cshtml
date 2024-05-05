@@ -9,7 +9,7 @@
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
 @inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
 <ul class="breadcrumb">
-    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li><a href="/">Home</a> <span class="divider">/</span></li>
     <li class="active">Products Name</li>
 </ul>
 <h3> @Model.Category.Name <small class="pull-right"> 40 <localize>available products</localize> </small></h3>
@@ -22,9 +22,9 @@
     <div class="control-group">
         <label class="control-label alignL"><localize>Sort By</localize> </label>
         <select>
-            <option>Priduct name A - Z</option>
-            <option>Priduct name Z - A</option>
-            <option>Priduct Stoke</option>
+            <option>Name A - Z</option>
+            <option>Name Z - A</option>
+            <option>Product Stoke</option>
             <option>Price Lowest first</option>
         </select>
     </div>

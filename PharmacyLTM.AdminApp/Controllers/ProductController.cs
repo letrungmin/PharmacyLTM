@@ -74,11 +74,11 @@ namespace PharmacyLTM.AdminApp.Controllers
             var result = await _productApiClient.CreateProduct(request);
             if (result)
             {
-                TempData["result"] = "Thêm mới sản phẩm thành công";
+                TempData["result"] = "Add new Product Successfully";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Thêm sản phẩm thất bại");
+            ModelState.AddModelError("", "Add new Product Failed");
             return View(request);
         }
 
@@ -99,7 +99,7 @@ namespace PharmacyLTM.AdminApp.Controllers
 
             if (result.IsSuccessed)
             {
-                TempData["result"] = "Cập nhật danh mục thành công";
+                TempData["result"] = "Category Assign Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -138,11 +138,11 @@ namespace PharmacyLTM.AdminApp.Controllers
             var result = await _productApiClient.UpdateProduct(request);
             if (result)
             {
-                TempData["result"] = "Cập nhật sản phẩm thành công";
+                TempData["result"] = "Update Product Successfully";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Cập nhật sản phẩm thất bại");
+            ModelState.AddModelError("", "Update Product Failed");
             return View(request);
         }
 
@@ -183,11 +183,11 @@ namespace PharmacyLTM.AdminApp.Controllers
             var result = await _productApiClient.DeleteProduct(request.Id);
             if (result)
             {
-                TempData["result"] = "Xóa sản phẩm thành công";
+                TempData["result"] = "Delete Product Successfully";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Xóa không thành công");
+            ModelState.AddModelError("", "Delete Product Failed");
             return View(request);
         }
     }

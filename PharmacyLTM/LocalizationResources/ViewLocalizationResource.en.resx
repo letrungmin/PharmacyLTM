@@ -133,6 +133,10 @@
     <value>Contact</value>
     <comment>Layouts</comment>
   </data>
+  <data name="CREATE YOUR ACCOUNT" xml:space="preserve">
+    <value>Register the Account</value>
+    <comment>/Account/Login</comment>
+  </data>
   <data name="Delivery" xml:space="preserve">
     <value>Delivery</value>
     <comment>Layouts</comment>
@@ -149,12 +153,20 @@
     <value> Home</value>
     <comment>Common</comment>
   </data>
-  <data name="Lastest Products" xml:space="preserve">
-    <value>Lastest Products</value>
+  <data name="Itemes in your cart" xml:space="preserve">
+    <value>Itemes in your cart</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="Latest Products" xml:space="preserve">
+    <value>Latest Products</value>
     <comment>/Home/Index</comment>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
     <comment>Layouts</comment>
   </data>
   <data name="More Details" xml:space="preserve">
@@ -185,8 +197,12 @@
     <value>Related Products</value>
     <comment>/Product/Detail</comment>
   </data>
+  <data name="Sign in" xml:space="preserve">
+    <value>Sign in</value>
+    <comment>/Account/Login</comment>
+  </data>
   <data name="Sort By" xml:space="preserve">
-    <value>Sort by</value>
+    <value>Sort By</value>
     <comment>/Product/Category</comment>
   </data>
   <data name="Specials Offer" xml:space="preserve">
@@ -204,5 +220,9 @@
   <data name="View Details" xml:space="preserve">
     <value>View Details</value>
     <comment>/Product/Category</comment>
+  </data>
+  <data name="Welcome!" xml:space="preserve">
+    <value>WELCOME!</value>
+    <comment>Layouts</comment>
   </data>
 </root>

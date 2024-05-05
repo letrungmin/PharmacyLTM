@@ -42,7 +42,7 @@ namespace PharmacyLTM.AdminApp
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.IdleTimeout = TimeSpan.FromMinutes(120);
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

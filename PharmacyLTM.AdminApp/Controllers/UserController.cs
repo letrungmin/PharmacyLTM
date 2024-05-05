@@ -73,7 +73,7 @@ namespace PharmacyLTM.AdminApp.Controllers
             var result = await _userApiClient.RegisterUser(request);
             if (result.IsSuccessed)
             {
-                TempData["result"] = "Thêm mới người dùng thành công";
+                TempData["result"] = "Add new User Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -111,7 +111,7 @@ namespace PharmacyLTM.AdminApp.Controllers
             var result = await _userApiClient.UpdateUser(request.Id, request);
             if (result.IsSuccessed)
             {
-                TempData["result"] = "Cập nhật người dùng thành công";
+                TempData["result"] = "Update User Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -145,7 +145,7 @@ namespace PharmacyLTM.AdminApp.Controllers
             var result = await _userApiClient.Delete(request.Id);
             if (result.IsSuccessed)
             {
-                TempData["result"] = "Xóa người dùng thành công";
+                TempData["result"] = "Delete Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -170,7 +170,7 @@ namespace PharmacyLTM.AdminApp.Controllers
 
             if (result.IsSuccessed)
             {
-                TempData["result"] = "Cập nhật quyền thành công";
+                TempData["result"] = "Role Assign Successfully";
                 return RedirectToAction("Index");
             }
 

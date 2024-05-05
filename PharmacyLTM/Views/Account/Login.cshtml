@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var culture = CultureInfo.CurrentCulture.Name;
 }
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
 <ul class="breadcrumb">
     <li><a href="/">Home</a> <span class="divider">/</span></li>
     <li class="active">Login</li>
@@ -30,9 +32,9 @@
             <h5>ALREADY REGISTERED ?</h5>
             <form action="/@culture/Account/Login" method="post">
                 <div class="control-group">
-                    <label class="control-label" for="inputEmail1">Email</label>
+                    <label class="control-label" for="inputUsername">Username</label>
                     <div class="controls">
-                        <input class="span3" type="text" asp-for="UserName" placeholder="Email">
+                        <input class="span3" type="text" asp-for="UserName" placeholder="Username">
                         <span asp-validation-for="UserName" class="text-error"></span>
                     </div>
                 </div>

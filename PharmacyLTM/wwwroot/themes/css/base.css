@@ -8,7 +8,7 @@
 #logoArea, #logoArea a{line-height:49px;}
 #logoArea .btn, #logoArea .btn-group {margin-top: 0;}
 #logo {padding-right:28px;}
-#welcomeLine{padding: 8px 0 4px}
+#welcomeLine{padding: 24px 0 12px,}
 /* Sidebar--------- */
 #myCart  img{float:left; margin-right:8px; }
 #myCart .badge {padding: 9px;}

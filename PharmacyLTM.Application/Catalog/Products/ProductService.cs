@@ -391,7 +391,7 @@ namespace PharmacyLTM.Application.Catalog.Products
             var user = await _context.Products.FindAsync(id);
             if (user == null)
             {
-                return new ApiErrorResult<bool>($"Sản phẩm với id {id} không tồn tại");
+                return new ApiErrorResult<bool>($"Product with id {id} doesn't exist");
             }
             foreach (var category in request.Categories)
             {
