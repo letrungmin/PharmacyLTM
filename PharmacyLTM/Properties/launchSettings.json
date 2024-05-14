@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:14473",
-      "sslPort": 44320
+      "applicationUrl": "http://localhost:40440",
+      "sslPort": 44342
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "PharmacyLTM": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "applicationUrl": "http://localhost:5003",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
