@@ -1,4 +1,4 @@
-# Online Pharmacy Management System <br>
+# Online Pharmacy Management System - PharmacyLTM <br>
 ### <i>Duration: April 5 to May 6, 2024</i>
 This document provides a comprehensive overview of the online pharmacy management system website application.
 
